@@ -1,0 +1,34 @@
+# VideoComponentTypeAllOf
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**drop_frame** | **bool** |  | [optional] 
+**bit_depth** | **int** |  | [optional] 
+**colr_primaries** | **int** |  | [optional] 
+**display_y_offset** | [**RationalType**](RationalType.md) |  | [optional] 
+**display_width** | [**RationalType**](RationalType.md) |  | [optional] 
+**color_primaries** | **str** |  | [optional] 
+**average_frame_rate** | [**TimeBaseType**](TimeBaseType.md) |  | [optional] 
+**bits_per_pixel** | **int** |  | [optional] 
+**pixel_aspect_ratio** | [**AspectRatioType**](AspectRatioType.md) |  | [optional] 
+**start_timecode** | **int** |  | [optional] 
+**real_base_frame_rate** | [**TimeBaseType**](TimeBaseType.md) |  | [optional] 
+**field_order** | **str** |  | [optional] 
+**display_x_offset** | [**RationalType**](RationalType.md) |  | [optional] 
+**colr_matrix** | **int** |  | [optional] 
+**media_info** | [**VideoMediaInfoType**](VideoMediaInfoType.md) |  | [optional] 
+**pixel_format** | **str** |  | [optional] 
+**codec_time_base** | [**TimeBaseType**](TimeBaseType.md) |  | [optional] 
+**max_packet_size** | **int** |  | [optional] 
+**ticks_per_frame** | **int** |  | [optional] 
+**max_b_frames** | **int** |  | [optional] 
+**container_sar** | [**AspectRatioType**](AspectRatioType.md) |  | [optional] 
+**video_standard** | [**VideoComponentTypeAllOfVideoStandard**](VideoComponentTypeAllOfVideoStandard.md) |  | [optional] 
+**colr_transfer_function** | **int** |  | [optional] 
+**display_height** | [**RationalType**](RationalType.md) |  | [optional] 
+**resolution** | [**ResolutionType**](ResolutionType.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
