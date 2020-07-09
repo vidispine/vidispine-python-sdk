@@ -143,13 +143,13 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = vidispine.ItemApi(vidispine.ApiClient(configuration))
 item_id = 'item_id_example' # str | The item id.
 jobmetadata = ['jobmetadata_example'] # list[str] | Additional information for the job task. (optional)
-track = ["*"] # list[str] | Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since Vidispine 5. 0, can also be of syntax: `shape:` {shape-id}:{track}, `cpl:` {CPL UUID}:{track}, `tag:` {shape-tag}:{track}, or `component:` {component-id}.  (The `component:` syntax means the same as with no prefix. ) (optional) (default to ["*"])
+track = ["*"] # list[str] | Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since 4. 17. 8, can also be on the format `{shape}:track`, where shape is identified by shape id or shape tag.  Since Vidispine 5. 0, can also be of syntax: `shape:` {shape-id}:{track}, `cpl:` {CPL UUID}:{track}, `tag:` {shape-tag}:{track}, or `component:` {component-id}.  (The `component:` syntax means the same as with no prefix. ) (optional) (default to ["*"])
 notification_data = 'notification_data_example' # str | Any additional data to include for notifications on this job. (optional)
 use_original_filename = False # bool | If set to `true`, the file(s) will be exported with their original filename if available. (optional) (default to False)
 tag = 'tag_example' # str | Finds a shape with the specified tag and uses that for export.  If not specified, the system will attempt to use the original shape. (optional)
 uri = 'uri_example' # str | A URI to the destination of the file. (optional)
 notification = 'notification_example' # str | The placeholder job notification to use for this job. (optional)
-cpl_track = ['cpl_track_example'] # list[str] | Comma-separated list of item track ids to include in the CPL.  The same format as the track parameter.  Default is the same as the track parameter. (optional)
+cpl_track = ['cpl_track_example'] # list[str] | Comma-separated list of item track ids to include in the CPL.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since 4. 17. 8, can also be on the format `{shape}:track`, where shape is identified by shape id or shape tag.  Default is the same as the track parameter. (optional)
 start = 'start_example' # str | Defines a start time_code for the media. (optional)
 projection = 'projection_example' # str | Defines the projection to use when exporting the metadata. (optional)
 end = 'end_example' # str | Defines an end time_code for the media. (optional)
@@ -175,13 +175,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item_id** | **str**| The item id. | 
  **jobmetadata** | [**list[str]**](str.md)| Additional information for the job task. | [optional] 
- **track** | [**list[str]**](str.md)| Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  &#x60;A*&#x60;.  Can also contain component ids.  Since Vidispine 5. 0, can also be of syntax: &#x60;shape:&#x60; {shape-id}:{track}, &#x60;cpl:&#x60; {CPL UUID}:{track}, &#x60;tag:&#x60; {shape-tag}:{track}, or &#x60;component:&#x60; {component-id}.  (The &#x60;component:&#x60; syntax means the same as with no prefix. ) | [optional] [default to [&quot;*&quot;]]
+ **track** | [**list[str]**](str.md)| Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  &#x60;A*&#x60;.  Can also contain component ids.  Since 4. 17. 8, can also be on the format &#x60;{shape}:track&#x60;, where shape is identified by shape id or shape tag.  Since Vidispine 5. 0, can also be of syntax: &#x60;shape:&#x60; {shape-id}:{track}, &#x60;cpl:&#x60; {CPL UUID}:{track}, &#x60;tag:&#x60; {shape-tag}:{track}, or &#x60;component:&#x60; {component-id}.  (The &#x60;component:&#x60; syntax means the same as with no prefix. ) | [optional] [default to [&quot;*&quot;]]
  **notification_data** | **str**| Any additional data to include for notifications on this job. | [optional] 
  **use_original_filename** | **bool**| If set to &#x60;true&#x60;, the file(s) will be exported with their original filename if available. | [optional] [default to False]
  **tag** | **str**| Finds a shape with the specified tag and uses that for export.  If not specified, the system will attempt to use the original shape. | [optional] 
  **uri** | **str**| A URI to the destination of the file. | [optional] 
  **notification** | **str**| The placeholder job notification to use for this job. | [optional] 
- **cpl_track** | [**list[str]**](str.md)| Comma-separated list of item track ids to include in the CPL.  The same format as the track parameter.  Default is the same as the track parameter. | [optional] 
+ **cpl_track** | [**list[str]**](str.md)| Comma-separated list of item track ids to include in the CPL.  Can include wildcards, e. g.  &#x60;A*&#x60;.  Can also contain component ids.  Since 4. 17. 8, can also be on the format &#x60;{shape}:track&#x60;, where shape is identified by shape id or shape tag.  Default is the same as the track parameter. | [optional] 
  **start** | **str**| Defines a start time_code for the media. | [optional] 
  **projection** | **str**| Defines the projection to use when exporting the metadata. | [optional] 
  **end** | **str**| Defines an end time_code for the media. | [optional] 

@@ -5744,6 +5744,7 @@ class ShapeApi(object):
         :key bool allow_reimport: - `true` - Import the file to this shape even if the file is already importing or is already part of another item.  - `false` (default) Reject the request if the file with the given id has already been imported or is currently importing.
         :key str file_id: The id of the file that contains the essence.  Must be specified unless `uri` is specified.
         :key str priority: The priority to assign to the job.
+        :key str resource_id: The transcoder resource to use to execute the transcode.
         :key _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -5778,6 +5779,7 @@ class ShapeApi(object):
         :key bool allow_reimport: - `true` - Import the file to this shape even if the file is already importing or is already part of another item.  - `false` (default) Reject the request if the file with the given id has already been imported or is currently importing.
         :key str file_id: The id of the file that contains the essence.  Must be specified unless `uri` is specified.
         :key str priority: The priority to assign to the job.
+        :key str resource_id: The transcoder resource to use to execute the transcode.
         :key _return_http_data_only: response data without head status code
                                        and headers
         :key _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5794,7 +5796,7 @@ class ShapeApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'jobmetadata', 'notification_data', 'storage_id', 'tag', 'uri', 'notification', 'allow_reimport', 'file_id', 'priority']  # noqa: E501
+        all_params = ['id', 'jobmetadata', 'notification_data', 'storage_id', 'tag', 'uri', 'notification', 'allow_reimport', 'file_id', 'priority', 'resource_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5839,6 +5841,8 @@ class ShapeApi(object):
             query_params.append(('fileId', local_var_params['file_id']))  # noqa: E501
         if 'priority' in local_var_params:
             query_params.append(('priority', local_var_params['priority']))  # noqa: E501
+        if 'resource_id' in local_var_params:
+            query_params.append(('resourceId', local_var_params['resource_id']))  # noqa: E501
 
         header_params = {}
 
@@ -5892,6 +5896,7 @@ class ShapeApi(object):
         :key str priority: The priority to assign to the job.
         :key str filename: The filename to be stored as original filename
         :key str transfer_id: An id to assign the transfer to be able to refer to it.
+        :key str resource_id: The transcoder resource to use to execute the transcode.
         :key _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -5927,6 +5932,7 @@ class ShapeApi(object):
         :key str priority: The priority to assign to the job.
         :key str filename: The filename to be stored as original filename
         :key str transfer_id: An id to assign the transfer to be able to refer to it.
+        :key str resource_id: The transcoder resource to use to execute the transcode.
         :key _return_http_data_only: response data without head status code
                                        and headers
         :key _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5943,7 +5949,7 @@ class ShapeApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'body', 'jobmetadata', 'notification_data', 'storage_id', 'tag', 'transfer_priority', 'notification', 'priority', 'filename', 'transfer_id']  # noqa: E501
+        all_params = ['id', 'body', 'jobmetadata', 'notification_data', 'storage_id', 'tag', 'transfer_priority', 'notification', 'priority', 'filename', 'transfer_id', 'resource_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5992,6 +5998,8 @@ class ShapeApi(object):
             query_params.append(('filename', local_var_params['filename']))  # noqa: E501
         if 'transfer_id' in local_var_params:
             query_params.append(('transferId', local_var_params['transfer_id']))  # noqa: E501
+        if 'resource_id' in local_var_params:
+            query_params.append(('resourceId', local_var_params['resource_id']))  # noqa: E501
 
         header_params = {}
 

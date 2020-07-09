@@ -232,13 +232,13 @@ class ItemApi(object):
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
         :key list[str] jobmetadata: Additional information for the job task.
-        :key list[str] track: Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since Vidispine 5. 0, can also be of syntax: `shape:` {shape-id}:{track}, `cpl:` {CPL UUID}:{track}, `tag:` {shape-tag}:{track}, or `component:` {component-id}.  (The `component:` syntax means the same as with no prefix. )
+        :key list[str] track: Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since 4. 17. 8, can also be on the format `{shape}:track`, where shape is identified by shape id or shape tag.  Since Vidispine 5. 0, can also be of syntax: `shape:` {shape-id}:{track}, `cpl:` {CPL UUID}:{track}, `tag:` {shape-tag}:{track}, or `component:` {component-id}.  (The `component:` syntax means the same as with no prefix. )
         :key str notification_data: Any additional data to include for notifications on this job.
         :key bool use_original_filename: If set to `true`, the file(s) will be exported with their original filename if available.
         :key str tag: Finds a shape with the specified tag and uses that for export.  If not specified, the system will attempt to use the original shape.
         :key str uri: A URI to the destination of the file.
         :key str notification: The placeholder job notification to use for this job.
-        :key list[str] cpl_track: Comma-separated list of item track ids to include in the CPL.  The same format as the track parameter.  Default is the same as the track parameter.
+        :key list[str] cpl_track: Comma-separated list of item track ids to include in the CPL.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since 4. 17. 8, can also be on the format `{shape}:track`, where shape is identified by shape id or shape tag.  Default is the same as the track parameter.
         :key str start: Defines a start time_code for the media.
         :key str projection: Defines the projection to use when exporting the metadata.
         :key str end: Defines an end time_code for the media.
@@ -275,13 +275,13 @@ class ItemApi(object):
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
         :key list[str] jobmetadata: Additional information for the job task.
-        :key list[str] track: Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since Vidispine 5. 0, can also be of syntax: `shape:` {shape-id}:{track}, `cpl:` {CPL UUID}:{track}, `tag:` {shape-tag}:{track}, or `component:` {component-id}.  (The `component:` syntax means the same as with no prefix. )
+        :key list[str] track: Comma-separated list of item track ids to include as physical files.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since 4. 17. 8, can also be on the format `{shape}:track`, where shape is identified by shape id or shape tag.  Since Vidispine 5. 0, can also be of syntax: `shape:` {shape-id}:{track}, `cpl:` {CPL UUID}:{track}, `tag:` {shape-tag}:{track}, or `component:` {component-id}.  (The `component:` syntax means the same as with no prefix. )
         :key str notification_data: Any additional data to include for notifications on this job.
         :key bool use_original_filename: If set to `true`, the file(s) will be exported with their original filename if available.
         :key str tag: Finds a shape with the specified tag and uses that for export.  If not specified, the system will attempt to use the original shape.
         :key str uri: A URI to the destination of the file.
         :key str notification: The placeholder job notification to use for this job.
-        :key list[str] cpl_track: Comma-separated list of item track ids to include in the CPL.  The same format as the track parameter.  Default is the same as the track parameter.
+        :key list[str] cpl_track: Comma-separated list of item track ids to include in the CPL.  Can include wildcards, e. g.  `A*`.  Can also contain component ids.  Since 4. 17. 8, can also be on the format `{shape}:track`, where shape is identified by shape id or shape tag.  Default is the same as the track parameter.
         :key str start: Defines a start time_code for the media.
         :key str projection: Defines the projection to use when exporting the metadata.
         :key str end: Defines an end time_code for the media.

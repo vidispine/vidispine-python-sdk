@@ -2950,7 +2950,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_shape_essence**
-> JobType import_shape_essence(id, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, uri=uri, notification=notification, allow_reimport=allow_reimport, file_id=file_id, priority=priority)
+> JobType import_shape_essence(id, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, uri=uri, notification=notification, allow_reimport=allow_reimport, file_id=file_id, priority=priority, resource_id=resource_id)
 
 Import an essence version using a URI or an existing file
 
@@ -2982,10 +2982,11 @@ notification = 'notification_example' # str | The placeholder job notification t
 allow_reimport = True # bool | - `true` - Import the file to this shape even if the file is already importing or is already part of another item.  - `false` (default) Reject the request if the file with the given id has already been imported or is currently importing. (optional)
 file_id = 'file_id_example' # str | The id of the file that contains the essence.  Must be specified unless `uri` is specified. (optional)
 priority = 'MEDIUM' # str | The priority to assign to the job. (optional) (default to 'MEDIUM')
+resource_id = 'resource_id_example' # str | The transcoder resource to use to execute the transcode. (optional)
 
 try:
     # Import an essence version using a URI or an existing file
-    api_response = api_instance.import_shape_essence(id, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, uri=uri, notification=notification, allow_reimport=allow_reimport, file_id=file_id, priority=priority)
+    api_response = api_instance.import_shape_essence(id, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, uri=uri, notification=notification, allow_reimport=allow_reimport, file_id=file_id, priority=priority, resource_id=resource_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ShapeApi->import_shape_essence: %s\n" % e)
@@ -3005,6 +3006,7 @@ Name | Type | Description  | Notes
  **allow_reimport** | **bool**| - &#x60;true&#x60; - Import the file to this shape even if the file is already importing or is already part of another item.  - &#x60;false&#x60; (default) Reject the request if the file with the given id has already been imported or is currently importing. | [optional] 
  **file_id** | **str**| The id of the file that contains the essence.  Must be specified unless &#x60;uri&#x60; is specified. | [optional] 
  **priority** | **str**| The priority to assign to the job. | [optional] [default to &#39;MEDIUM&#39;]
+ **resource_id** | **str**| The transcoder resource to use to execute the transcode. | [optional] 
 
 ### Return type
 
@@ -3027,7 +3029,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_shape_essence_raw**
-> JobType import_shape_essence_raw(id, body, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, transfer_priority=transfer_priority, notification=notification, priority=priority, filename=filename, transfer_id=transfer_id)
+> JobType import_shape_essence_raw(id, body, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, transfer_priority=transfer_priority, notification=notification, priority=priority, filename=filename, transfer_id=transfer_id, resource_id=resource_id)
 
 Import an essence version using the request body
 
@@ -3060,10 +3062,11 @@ notification = 'notification_example' # str | The placeholder job notification t
 priority = 'MEDIUM' # str | The priority to assign to the job. (optional) (default to 'MEDIUM')
 filename = 'filename_example' # str | The filename to be stored as original filename (optional)
 transfer_id = 'transfer_id_example' # str | An id to assign the transfer to be able to refer to it. (optional)
+resource_id = 'resource_id_example' # str | The transcoder resource to use to execute the transcode. (optional)
 
 try:
     # Import an essence version using the request body
-    api_response = api_instance.import_shape_essence_raw(id, body, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, transfer_priority=transfer_priority, notification=notification, priority=priority, filename=filename, transfer_id=transfer_id)
+    api_response = api_instance.import_shape_essence_raw(id, body, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, tag=tag, transfer_priority=transfer_priority, notification=notification, priority=priority, filename=filename, transfer_id=transfer_id, resource_id=resource_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ShapeApi->import_shape_essence_raw: %s\n" % e)
@@ -3084,6 +3087,7 @@ Name | Type | Description  | Notes
  **priority** | **str**| The priority to assign to the job. | [optional] [default to &#39;MEDIUM&#39;]
  **filename** | **str**| The filename to be stored as original filename | [optional] 
  **transfer_id** | **str**| An id to assign the transfer to be able to refer to it. | [optional] 
+ **resource_id** | **str**| The transcoder resource to use to execute the transcode. | [optional] 
 
 ### Return type
 

@@ -36,9 +36,13 @@ class IndexingConfigurationType(object):
         'auto_soft_commit': 'bool',
         'query_timeout': 'int',
         'soft_commit_interval': 'int',
+        'solr_path': 'str',
+        'zookeeper_host': 'list[str]',
         'ping_timeout': 'int',
+        'solr_collection': 'str',
         'commit_interval': 'int',
-        'ping_attempts': 'int'
+        'ping_attempts': 'int',
+        'elasticsearch_path': 'str'
     }
 
     attribute_map = {
@@ -46,21 +50,29 @@ class IndexingConfigurationType(object):
         'auto_soft_commit': 'autoSoftCommit',
         'query_timeout': 'queryTimeout',
         'soft_commit_interval': 'softCommitInterval',
+        'solr_path': 'solrPath',
+        'zookeeper_host': 'zookeeperHost',
         'ping_timeout': 'pingTimeout',
+        'solr_collection': 'solrCollection',
         'commit_interval': 'commitInterval',
-        'ping_attempts': 'pingAttempts'
+        'ping_attempts': 'pingAttempts',
+        'elasticsearch_path': 'elasticsearchPath'
     }
 
-    def __init__(self, field_default=None, auto_soft_commit=None, query_timeout=None, soft_commit_interval=None, ping_timeout=None, commit_interval=None, ping_attempts=None):  # noqa: E501
+    def __init__(self, field_default=None, auto_soft_commit=None, query_timeout=None, soft_commit_interval=None, solr_path=None, zookeeper_host=None, ping_timeout=None, solr_collection=None, commit_interval=None, ping_attempts=None, elasticsearch_path=None):  # noqa: E501
         """IndexingConfigurationType - a model defined in OpenAPI"""  # noqa: E501
 
         self._field_default = None
         self._auto_soft_commit = None
         self._query_timeout = None
         self._soft_commit_interval = None
+        self._solr_path = None
+        self._zookeeper_host = None
         self._ping_timeout = None
+        self._solr_collection = None
         self._commit_interval = None
         self._ping_attempts = None
+        self._elasticsearch_path = None
         self.discriminator = None
 
         if field_default is not None:
@@ -71,12 +83,20 @@ class IndexingConfigurationType(object):
             self.query_timeout = query_timeout
         if soft_commit_interval is not None:
             self.soft_commit_interval = soft_commit_interval
+        if solr_path is not None:
+            self.solr_path = solr_path
+        if zookeeper_host is not None:
+            self.zookeeper_host = zookeeper_host
         if ping_timeout is not None:
             self.ping_timeout = ping_timeout
+        if solr_collection is not None:
+            self.solr_collection = solr_collection
         if commit_interval is not None:
             self.commit_interval = commit_interval
         if ping_attempts is not None:
             self.ping_attempts = ping_attempts
+        if elasticsearch_path is not None:
+            self.elasticsearch_path = elasticsearch_path
 
     @property
     def field_default(self):
@@ -163,6 +183,48 @@ class IndexingConfigurationType(object):
         self._soft_commit_interval = soft_commit_interval
 
     @property
+    def solr_path(self):
+        """Gets the solr_path of this IndexingConfigurationType.  # noqa: E501
+
+
+        :return: The solr_path of this IndexingConfigurationType.  # noqa: E501
+        :rtype: str
+        """
+        return self._solr_path
+
+    @solr_path.setter
+    def solr_path(self, solr_path):
+        """Sets the solr_path of this IndexingConfigurationType.
+
+
+        :param solr_path: The solr_path of this IndexingConfigurationType.  # noqa: E501
+        :type: str
+        """
+
+        self._solr_path = solr_path
+
+    @property
+    def zookeeper_host(self):
+        """Gets the zookeeper_host of this IndexingConfigurationType.  # noqa: E501
+
+
+        :return: The zookeeper_host of this IndexingConfigurationType.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._zookeeper_host
+
+    @zookeeper_host.setter
+    def zookeeper_host(self, zookeeper_host):
+        """Sets the zookeeper_host of this IndexingConfigurationType.
+
+
+        :param zookeeper_host: The zookeeper_host of this IndexingConfigurationType.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._zookeeper_host = zookeeper_host
+
+    @property
     def ping_timeout(self):
         """Gets the ping_timeout of this IndexingConfigurationType.  # noqa: E501
 
@@ -182,6 +244,27 @@ class IndexingConfigurationType(object):
         """
 
         self._ping_timeout = ping_timeout
+
+    @property
+    def solr_collection(self):
+        """Gets the solr_collection of this IndexingConfigurationType.  # noqa: E501
+
+
+        :return: The solr_collection of this IndexingConfigurationType.  # noqa: E501
+        :rtype: str
+        """
+        return self._solr_collection
+
+    @solr_collection.setter
+    def solr_collection(self, solr_collection):
+        """Sets the solr_collection of this IndexingConfigurationType.
+
+
+        :param solr_collection: The solr_collection of this IndexingConfigurationType.  # noqa: E501
+        :type: str
+        """
+
+        self._solr_collection = solr_collection
 
     @property
     def commit_interval(self):
@@ -224,6 +307,27 @@ class IndexingConfigurationType(object):
         """
 
         self._ping_attempts = ping_attempts
+
+    @property
+    def elasticsearch_path(self):
+        """Gets the elasticsearch_path of this IndexingConfigurationType.  # noqa: E501
+
+
+        :return: The elasticsearch_path of this IndexingConfigurationType.  # noqa: E501
+        :rtype: str
+        """
+        return self._elasticsearch_path
+
+    @elasticsearch_path.setter
+    def elasticsearch_path(self, elasticsearch_path):
+        """Sets the elasticsearch_path of this IndexingConfigurationType.
+
+
+        :param elasticsearch_path: The elasticsearch_path of this IndexingConfigurationType.  # noqa: E501
+        :type: str
+        """
+
+        self._elasticsearch_path = elasticsearch_path
 
     def to_dict(self):
         """Returns the model properties as a dict"""

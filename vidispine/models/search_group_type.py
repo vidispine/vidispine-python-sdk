@@ -33,25 +33,40 @@ class SearchGroupType(object):
     """
     openapi_types = {
         'operator': 'SearchOperatorType',
-        'name': 'str'
+        'field': 'list[SearchFieldType]',
+        'group': 'list[SearchGroupType]',
+        'name': 'str',
+        'reference': 'str'
     }
 
     attribute_map = {
         'operator': 'operator',
-        'name': 'name'
+        'field': 'field',
+        'group': 'group',
+        'name': 'name',
+        'reference': 'reference'
     }
 
-    def __init__(self, operator=None, name=None):  # noqa: E501
+    def __init__(self, operator=None, field=None, group=None, name=None, reference=None):  # noqa: E501
         """SearchGroupType - a model defined in OpenAPI"""  # noqa: E501
 
         self._operator = None
+        self._field = None
+        self._group = None
         self._name = None
+        self._reference = None
         self.discriminator = None
 
         if operator is not None:
             self.operator = operator
+        if field is not None:
+            self.field = field
+        if group is not None:
+            self.group = group
         if name is not None:
             self.name = name
+        if reference is not None:
+            self.reference = reference
 
     @property
     def operator(self):
@@ -75,6 +90,48 @@ class SearchGroupType(object):
         self._operator = operator
 
     @property
+    def field(self):
+        """Gets the field of this SearchGroupType.  # noqa: E501
+
+
+        :return: The field of this SearchGroupType.  # noqa: E501
+        :rtype: list[SearchFieldType]
+        """
+        return self._field
+
+    @field.setter
+    def field(self, field):
+        """Sets the field of this SearchGroupType.
+
+
+        :param field: The field of this SearchGroupType.  # noqa: E501
+        :type: list[SearchFieldType]
+        """
+
+        self._field = field
+
+    @property
+    def group(self):
+        """Gets the group of this SearchGroupType.  # noqa: E501
+
+
+        :return: The group of this SearchGroupType.  # noqa: E501
+        :rtype: list[SearchGroupType]
+        """
+        return self._group
+
+    @group.setter
+    def group(self, group):
+        """Sets the group of this SearchGroupType.
+
+
+        :param group: The group of this SearchGroupType.  # noqa: E501
+        :type: list[SearchGroupType]
+        """
+
+        self._group = group
+
+    @property
     def name(self):
         """Gets the name of this SearchGroupType.  # noqa: E501
 
@@ -94,6 +151,27 @@ class SearchGroupType(object):
         """
 
         self._name = name
+
+    @property
+    def reference(self):
+        """Gets the reference of this SearchGroupType.  # noqa: E501
+
+
+        :return: The reference of this SearchGroupType.  # noqa: E501
+        :rtype: str
+        """
+        return self._reference
+
+    @reference.setter
+    def reference(self, reference):
+        """Sets the reference of this SearchGroupType.
+
+
+        :param reference: The reference of this SearchGroupType.  # noqa: E501
+        :type: str
+        """
+
+        self._reference = reference
 
     def to_dict(self):
         """Returns the model properties as a dict"""

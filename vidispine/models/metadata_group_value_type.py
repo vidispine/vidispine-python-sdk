@@ -33,8 +33,11 @@ class MetadataGroupValueType(object):
     """
     openapi_types = {
         'referenced': 'MetadataReferencedType',
+        'group': 'list[MetadataGroupValueType]',
         'name': 'str',
+        'reference': 'str',
         'inheritance': 'str',
+        'field': 'list[MetadataFieldValueType]',
         'data': 'list[KeyValuePairType]',
         'id': 'list[str]',
         'cycle': 'bool'
@@ -42,19 +45,25 @@ class MetadataGroupValueType(object):
 
     attribute_map = {
         'referenced': 'referenced',
+        'group': 'group',
         'name': 'name',
+        'reference': 'reference',
         'inheritance': 'inheritance',
+        'field': 'field',
         'data': 'data',
         'id': 'id',
         'cycle': 'cycle'
     }
 
-    def __init__(self, referenced=None, name=None, inheritance=None, data=None, id=None, cycle=None):  # noqa: E501
+    def __init__(self, referenced=None, group=None, name=None, reference=None, inheritance=None, field=None, data=None, id=None, cycle=None):  # noqa: E501
         """MetadataGroupValueType - a model defined in OpenAPI"""  # noqa: E501
 
         self._referenced = None
+        self._group = None
         self._name = None
+        self._reference = None
         self._inheritance = None
+        self._field = None
         self._data = None
         self._id = None
         self._cycle = None
@@ -62,10 +71,16 @@ class MetadataGroupValueType(object):
 
         if referenced is not None:
             self.referenced = referenced
+        if group is not None:
+            self.group = group
         if name is not None:
             self.name = name
+        if reference is not None:
+            self.reference = reference
         if inheritance is not None:
             self.inheritance = inheritance
+        if field is not None:
+            self.field = field
         if data is not None:
             self.data = data
         if id is not None:
@@ -95,6 +110,27 @@ class MetadataGroupValueType(object):
         self._referenced = referenced
 
     @property
+    def group(self):
+        """Gets the group of this MetadataGroupValueType.  # noqa: E501
+
+
+        :return: The group of this MetadataGroupValueType.  # noqa: E501
+        :rtype: list[MetadataGroupValueType]
+        """
+        return self._group
+
+    @group.setter
+    def group(self, group):
+        """Sets the group of this MetadataGroupValueType.
+
+
+        :param group: The group of this MetadataGroupValueType.  # noqa: E501
+        :type: list[MetadataGroupValueType]
+        """
+
+        self._group = group
+
+    @property
     def name(self):
         """Gets the name of this MetadataGroupValueType.  # noqa: E501
 
@@ -116,6 +152,27 @@ class MetadataGroupValueType(object):
         self._name = name
 
     @property
+    def reference(self):
+        """Gets the reference of this MetadataGroupValueType.  # noqa: E501
+
+
+        :return: The reference of this MetadataGroupValueType.  # noqa: E501
+        :rtype: str
+        """
+        return self._reference
+
+    @reference.setter
+    def reference(self, reference):
+        """Sets the reference of this MetadataGroupValueType.
+
+
+        :param reference: The reference of this MetadataGroupValueType.  # noqa: E501
+        :type: str
+        """
+
+        self._reference = reference
+
+    @property
     def inheritance(self):
         """Gets the inheritance of this MetadataGroupValueType.  # noqa: E501
 
@@ -135,6 +192,27 @@ class MetadataGroupValueType(object):
         """
 
         self._inheritance = inheritance
+
+    @property
+    def field(self):
+        """Gets the field of this MetadataGroupValueType.  # noqa: E501
+
+
+        :return: The field of this MetadataGroupValueType.  # noqa: E501
+        :rtype: list[MetadataFieldValueType]
+        """
+        return self._field
+
+    @field.setter
+    def field(self, field):
+        """Sets the field of this MetadataGroupValueType.
+
+
+        :param field: The field of this MetadataGroupValueType.  # noqa: E501
+        :type: list[MetadataFieldValueType]
+        """
+
+        self._field = field
 
     @property
     def data(self):

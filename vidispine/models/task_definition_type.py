@@ -35,13 +35,16 @@ class TaskDefinitionType(object):
         'description': 'str',
         'script': 'str',
         'extradata': 'str',
+        'bean': 'str',
+        'plugin': 'bool',
+        'id': 'int',
         'dependency': 'TaskDefinitionDependency',
         'step': 'int',
         'cleanup': 'bool',
         'flags': 'int',
         'critical': 'bool',
         'parallel_dependency': 'TaskDefinitionDependency',
-        'id': 'int',
+        'method': 'str',
         'job_type': 'str',
         'metadata': 'SimpleMetadataType'
     }
@@ -50,30 +53,36 @@ class TaskDefinitionType(object):
         'description': 'description',
         'script': 'script',
         'extradata': 'extradata',
+        'bean': 'bean',
+        'plugin': 'plugin',
+        'id': 'id',
         'dependency': 'dependency',
         'step': 'step',
         'cleanup': 'cleanup',
         'flags': 'flags',
         'critical': 'critical',
         'parallel_dependency': 'parallelDependency',
-        'id': 'id',
+        'method': 'method',
         'job_type': 'jobType',
         'metadata': 'metadata'
     }
 
-    def __init__(self, description=None, script=None, extradata=None, dependency=None, step=None, cleanup=None, flags=None, critical=None, parallel_dependency=None, id=None, job_type=None, metadata=None):  # noqa: E501
+    def __init__(self, description=None, script=None, extradata=None, bean=None, plugin=None, id=None, dependency=None, step=None, cleanup=None, flags=None, critical=None, parallel_dependency=None, method=None, job_type=None, metadata=None):  # noqa: E501
         """TaskDefinitionType - a model defined in OpenAPI"""  # noqa: E501
 
         self._description = None
         self._script = None
         self._extradata = None
+        self._bean = None
+        self._plugin = None
+        self._id = None
         self._dependency = None
         self._step = None
         self._cleanup = None
         self._flags = None
         self._critical = None
         self._parallel_dependency = None
-        self._id = None
+        self._method = None
         self._job_type = None
         self._metadata = None
         self.discriminator = None
@@ -84,6 +93,12 @@ class TaskDefinitionType(object):
             self.script = script
         if extradata is not None:
             self.extradata = extradata
+        if bean is not None:
+            self.bean = bean
+        if plugin is not None:
+            self.plugin = plugin
+        if id is not None:
+            self.id = id
         if dependency is not None:
             self.dependency = dependency
         if step is not None:
@@ -96,8 +111,8 @@ class TaskDefinitionType(object):
             self.critical = critical
         if parallel_dependency is not None:
             self.parallel_dependency = parallel_dependency
-        if id is not None:
-            self.id = id
+        if method is not None:
+            self.method = method
         if job_type is not None:
             self.job_type = job_type
         if metadata is not None:
@@ -165,6 +180,69 @@ class TaskDefinitionType(object):
         """
 
         self._extradata = extradata
+
+    @property
+    def bean(self):
+        """Gets the bean of this TaskDefinitionType.  # noqa: E501
+
+
+        :return: The bean of this TaskDefinitionType.  # noqa: E501
+        :rtype: str
+        """
+        return self._bean
+
+    @bean.setter
+    def bean(self, bean):
+        """Sets the bean of this TaskDefinitionType.
+
+
+        :param bean: The bean of this TaskDefinitionType.  # noqa: E501
+        :type: str
+        """
+
+        self._bean = bean
+
+    @property
+    def plugin(self):
+        """Gets the plugin of this TaskDefinitionType.  # noqa: E501
+
+
+        :return: The plugin of this TaskDefinitionType.  # noqa: E501
+        :rtype: bool
+        """
+        return self._plugin
+
+    @plugin.setter
+    def plugin(self, plugin):
+        """Sets the plugin of this TaskDefinitionType.
+
+
+        :param plugin: The plugin of this TaskDefinitionType.  # noqa: E501
+        :type: bool
+        """
+
+        self._plugin = plugin
+
+    @property
+    def id(self):
+        """Gets the id of this TaskDefinitionType.  # noqa: E501
+
+
+        :return: The id of this TaskDefinitionType.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this TaskDefinitionType.
+
+
+        :param id: The id of this TaskDefinitionType.  # noqa: E501
+        :type: int
+        """
+
+        self._id = id
 
     @property
     def dependency(self):
@@ -293,25 +371,25 @@ class TaskDefinitionType(object):
         self._parallel_dependency = parallel_dependency
 
     @property
-    def id(self):
-        """Gets the id of this TaskDefinitionType.  # noqa: E501
+    def method(self):
+        """Gets the method of this TaskDefinitionType.  # noqa: E501
 
 
-        :return: The id of this TaskDefinitionType.  # noqa: E501
-        :rtype: int
+        :return: The method of this TaskDefinitionType.  # noqa: E501
+        :rtype: str
         """
-        return self._id
+        return self._method
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this TaskDefinitionType.
+    @method.setter
+    def method(self, method):
+        """Sets the method of this TaskDefinitionType.
 
 
-        :param id: The id of this TaskDefinitionType.  # noqa: E501
-        :type: int
+        :param method: The method of this TaskDefinitionType.  # noqa: E501
+        :type: str
         """
 
-        self._id = id
+        self._method = method
 
     @property
     def job_type(self):
