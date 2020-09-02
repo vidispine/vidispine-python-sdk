@@ -3,7 +3,7 @@
 Official Vidispine API client for Python projects.
 
 - API version: 5.x
-- Package version: 5.0.3
+- Package version: 5.0.4
 - Build package: org.openapitools.codegen.languages.PythonClientCodegen
 
 For more information, please visit [http://support.vidispine.com/](http://support.vidispine.com/)

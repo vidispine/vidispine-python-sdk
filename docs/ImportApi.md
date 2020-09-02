@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost:8080/API*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adopt_file**](ImportApi.md#adopt_file) | **POST** /import/placeholder/{item-id}/[container,audio,video,binary]/adopt/{file-id} | Adopt stand-alone files
+[**adopt_file**](ImportApi.md#adopt_file) | **POST** /import/placeholder/{item-id}/{component-type}/adopt/{file-id} | Adopt stand-alone files
 [**create_placeholder**](ImportApi.md#create_placeholder) | **POST** /import/placeholder | Create a placeholder item
 [**create_placeholder_import_passkey**](ImportApi.md#create_placeholder_import_passkey) | **POST** /import/placeholder/{item-id}/raw-passkey | Create passkey for placeholder item
 [**delete_default_access_control_for_group**](ImportApi.md#delete_default_access_control_for_group) | **DELETE** /import/access/group/{group-name} | Remove a group from the default access control list
@@ -19,22 +19,22 @@ Method | HTTP request | Description
 [**import_item_raw**](ImportApi.md#import_item_raw) | **POST** /import/raw | Import using the request body
 [**import_item_raw_passkey**](ImportApi.md#import_item_raw_passkey) | **POST** /import/raw-passkey | Import using a passkey
 [**import_placeholder_bulk**](ImportApi.md#import_placeholder_bulk) | **POST** /import/placeholder/{item-id} | Import to a placeholder item in bulk
-[**import_placeholder_raw**](ImportApi.md#import_placeholder_raw) | **POST** /import/placeholder/{item-id}/[container,audio,video,binary]/raw | Import to a placeholder item using the request body
+[**import_placeholder_raw**](ImportApi.md#import_placeholder_raw) | **POST** /import/placeholder/{item-id}/{component-type}/raw | Import to a placeholder item using the request body
 [**import_project**](ImportApi.md#import_project) | **POST** /import/project | Import a project
 [**import_project_sequence**](ImportApi.md#import_project_sequence) | **POST** /import/project/sequence | Import a sequence
 [**import_sidecar**](ImportApi.md#import_sidecar) | **POST** /import/sidecar/{item-id} | Import a sidecar file
 [**import_sidecar_raw**](ImportApi.md#import_sidecar_raw) | **POST** /import/sidecar/{item-id}/raw | Import a sidecar file
 [**import_storage_definition**](ImportApi.md#import_storage_definition) | **POST** /storage/import | Import a storage definition
-[**import_to_placeholder**](ImportApi.md#import_to_placeholder) | **POST** /import/placeholder/{item-id}/[container,audio,video,binary] | Import to a placeholder item
+[**import_to_placeholder**](ImportApi.md#import_to_placeholder) | **POST** /import/placeholder/{item-id}/{component-type} | Import to a placeholder item
 [**update_default_access_control_for_group**](ImportApi.md#update_default_access_control_for_group) | **PUT** /import/access/group/{group-name} | Add a group to the default access control list
 
 
 # **adopt_file**
-> adopt_file(item_id, file_id, index=index, shape_id=shape_id)
+> adopt_file(item_id, component_type, file_id, index=index, shape_id=shape_id)
 
 Adopt stand-alone files
 
-Adopt the file as a component in a placeholder item.
+Adopt the file as a component in a placeholder item. The value of component-type is one of: `container, audio, video, binary`
 
 ### Example
 
@@ -53,13 +53,14 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = vidispine.ImportApi(vidispine.ApiClient(configuration))
 item_id = 'item_id_example' # str | The item id.
+component_type = 'component_type_example' # str | The component type.
 file_id = 'file_id_example' # str | The file id.
 index = 56 # int | Index (order) of the component. (optional)
 shape_id = 'shape_id_example' # str | Shape id for which shape to receive the content. (optional)
 
 try:
     # Adopt stand-alone files
-    api_instance.adopt_file(item_id, file_id, index=index, shape_id=shape_id)
+    api_instance.adopt_file(item_id, component_type, file_id, index=index, shape_id=shape_id)
 except ApiException as e:
     print("Exception when calling ImportApi->adopt_file: %s\n" % e)
 ```
@@ -69,6 +70,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item_id** | **str**| The item id. | 
+ **component_type** | **str**| The component type. | 
  **file_id** | **str**| The file id. | 
  **index** | **int**| Index (order) of the component. | [optional] 
  **shape_id** | **str**| Shape id for which shape to receive the content. | [optional] 
@@ -1319,7 +1321,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_placeholder_raw**
-> JobType import_placeholder_raw(item_id, body, resource_id=resource_id, jobmetadata=jobmetadata, notification_data=notification_data, thumbnail_service=thumbnail_service, tag=tag, transfer_priority=transfer_priority, index=index, require_fast_start=require_fast_start, notification=notification, fast_start_length=fast_start_length, priority=priority, storage_id=storage_id, create_thumbnails=create_thumbnails, create_posters=create_posters, override_fast_start=override_fast_start, original=original, shape_id=shape_id, filename=filename, transfer_id=transfer_id, no_transcode=no_transcode)
+> JobType import_placeholder_raw(item_id, component_type, body, resource_id=resource_id, jobmetadata=jobmetadata, notification_data=notification_data, thumbnail_service=thumbnail_service, tag=tag, transfer_priority=transfer_priority, index=index, require_fast_start=require_fast_start, notification=notification, fast_start_length=fast_start_length, priority=priority, storage_id=storage_id, create_thumbnails=create_thumbnails, create_posters=create_posters, override_fast_start=override_fast_start, original=original, shape_id=shape_id, filename=filename, transfer_id=transfer_id, no_transcode=no_transcode)
 
 Import to a placeholder item using the request body
 
@@ -1342,6 +1344,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = vidispine.ImportApi(vidispine.ApiClient(configuration))
 item_id = 'item_id_example' # str | The item id.
+component_type = 'component_type_example' # str | The component type.
 body = '/path/to/file' # file | The raw data.
 resource_id = 'resource_id_example' # str | The transcoder resource to use to execute the transcode. (optional)
 jobmetadata = ['jobmetadata_example'] # list[str] | Additional information for the job task. (optional)
@@ -1366,7 +1369,7 @@ no_transcode = False # bool | - `true` - Will disable transcoding even if the `t
 
 try:
     # Import to a placeholder item using the request body
-    api_response = api_instance.import_placeholder_raw(item_id, body, resource_id=resource_id, jobmetadata=jobmetadata, notification_data=notification_data, thumbnail_service=thumbnail_service, tag=tag, transfer_priority=transfer_priority, index=index, require_fast_start=require_fast_start, notification=notification, fast_start_length=fast_start_length, priority=priority, storage_id=storage_id, create_thumbnails=create_thumbnails, create_posters=create_posters, override_fast_start=override_fast_start, original=original, shape_id=shape_id, filename=filename, transfer_id=transfer_id, no_transcode=no_transcode)
+    api_response = api_instance.import_placeholder_raw(item_id, component_type, body, resource_id=resource_id, jobmetadata=jobmetadata, notification_data=notification_data, thumbnail_service=thumbnail_service, tag=tag, transfer_priority=transfer_priority, index=index, require_fast_start=require_fast_start, notification=notification, fast_start_length=fast_start_length, priority=priority, storage_id=storage_id, create_thumbnails=create_thumbnails, create_posters=create_posters, override_fast_start=override_fast_start, original=original, shape_id=shape_id, filename=filename, transfer_id=transfer_id, no_transcode=no_transcode)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ImportApi->import_placeholder_raw: %s\n" % e)
@@ -1377,6 +1380,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item_id** | **str**| The item id. | 
+ **component_type** | **str**| The component type. | 
  **body** | **file**| The raw data. | 
  **resource_id** | **str**| The transcoder resource to use to execute the transcode. | [optional] 
  **jobmetadata** | [**list[str]**](str.md)| Additional information for the job task. | [optional] 
@@ -1756,7 +1760,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_to_placeholder**
-> JobType import_to_placeholder(item_id, uri=uri, no_transcode=no_transcode, original=original, fast_start_length=fast_start_length, create_thumbnails=create_thumbnails, create_posters=create_posters, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, require_fast_start=require_fast_start, growing=growing, tag=tag, resource_id=resource_id, thumbnail_service=thumbnail_service, settings=settings, notification=notification, file_id=file_id, shape_id=shape_id, allow_reimport=allow_reimport, index=index, priority=priority, override_fast_start=override_fast_start)
+> JobType import_to_placeholder(item_id, component_type, uri=uri, no_transcode=no_transcode, original=original, fast_start_length=fast_start_length, create_thumbnails=create_thumbnails, create_posters=create_posters, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, require_fast_start=require_fast_start, growing=growing, tag=tag, resource_id=resource_id, thumbnail_service=thumbnail_service, settings=settings, notification=notification, file_id=file_id, shape_id=shape_id, allow_reimport=allow_reimport, index=index, priority=priority, override_fast_start=override_fast_start)
 
 Import to a placeholder item
 
@@ -1779,6 +1783,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = vidispine.ImportApi(vidispine.ApiClient(configuration))
 item_id = 'item_id_example' # str | The item id.
+component_type = 'component_type_example' # str | The component type.
 uri = 'uri_example' # str | A URI to the file that will be imported.  Make sure to percent encode the URI.  Must be specified unless `fileId` is specified. (optional)
 no_transcode = False # bool | - `true` - Will disable transcoding even if the `tags` parameter is set.  Rather, the specified tag will be used to determine cropping, scaling etc.  of thumbnails.  - `false` (default) - Normal transcode. (optional) (default to False)
 original = 'original_example' # str | If specified, should be one of the tags specified in the tag parameter.  Specifies that the original shape tag will be reset to the shape created to this tag. (optional)
@@ -1804,7 +1809,7 @@ override_fast_start = True # bool | - `true` (default) - Use transcoder's estima
 
 try:
     # Import to a placeholder item
-    api_response = api_instance.import_to_placeholder(item_id, uri=uri, no_transcode=no_transcode, original=original, fast_start_length=fast_start_length, create_thumbnails=create_thumbnails, create_posters=create_posters, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, require_fast_start=require_fast_start, growing=growing, tag=tag, resource_id=resource_id, thumbnail_service=thumbnail_service, settings=settings, notification=notification, file_id=file_id, shape_id=shape_id, allow_reimport=allow_reimport, index=index, priority=priority, override_fast_start=override_fast_start)
+    api_response = api_instance.import_to_placeholder(item_id, component_type, uri=uri, no_transcode=no_transcode, original=original, fast_start_length=fast_start_length, create_thumbnails=create_thumbnails, create_posters=create_posters, jobmetadata=jobmetadata, notification_data=notification_data, storage_id=storage_id, require_fast_start=require_fast_start, growing=growing, tag=tag, resource_id=resource_id, thumbnail_service=thumbnail_service, settings=settings, notification=notification, file_id=file_id, shape_id=shape_id, allow_reimport=allow_reimport, index=index, priority=priority, override_fast_start=override_fast_start)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ImportApi->import_to_placeholder: %s\n" % e)
@@ -1815,6 +1820,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item_id** | **str**| The item id. | 
+ **component_type** | **str**| The component type. | 
  **uri** | **str**| A URI to the file that will be imported.  Make sure to percent encode the URI.  Must be specified unless &#x60;fileId&#x60; is specified. | [optional] 
  **no_transcode** | **bool**| - &#x60;true&#x60; - Will disable transcoding even if the &#x60;tags&#x60; parameter is set.  Rather, the specified tag will be used to determine cropping, scaling etc.  of thumbnails.  - &#x60;false&#x60; (default) - Normal transcode. | [optional] [default to False]
  **original** | **str**| If specified, should be one of the tags specified in the tag parameter.  Specifies that the original shape tag will be reset to the shape created to this tag. | [optional] 

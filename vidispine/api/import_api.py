@@ -38,19 +38,20 @@ class ImportApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def adopt_file(self, item_id, file_id, **kwargs):  # noqa: E501
+    def adopt_file(self, item_id, component_type, file_id, **kwargs):  # noqa: E501
         """Adopt stand-alone files  # noqa: E501
 
-        Adopt the file as a component in a placeholder item.  # noqa: E501
+        Adopt the file as a component in a placeholder item. The value of component-type is one of: `container, audio, video, binary`  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.adopt_file(item_id, file_id, async_req=True)
+        >>> thread = api.adopt_file(item_id, component_type, file_id, async_req=True)
         >>> result = thread.get()
 
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
+        :param str component_type: The component type. (required)
         :param str file_id: The file id. (required)
         :key int index: Index (order) of the component.
         :key str shape_id: Shape id for which shape to receive the content.
@@ -66,19 +67,20 @@ class ImportApi(object):
         :rtype: None or multiprocessing.pool.AsyncResult
         """
         kwargs['_return_http_data_only'] = True
-        return self.adopt_file_with_http_info(item_id, file_id, **kwargs)  # noqa: E501
+        return self.adopt_file_with_http_info(item_id, component_type, file_id, **kwargs)  # noqa: E501
 
-    def adopt_file_with_http_info(self, item_id, file_id, **kwargs):  # noqa: E501
+    def adopt_file_with_http_info(self, item_id, component_type, file_id, **kwargs):  # noqa: E501
         """Adopt stand-alone files  # noqa: E501
 
-        Adopt the file as a component in a placeholder item.  # noqa: E501
+        Adopt the file as a component in a placeholder item. The value of component-type is one of: `container, audio, video, binary`  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.adopt_file_with_http_info(item_id, file_id, async_req=True)
+        >>> thread = api.adopt_file_with_http_info(item_id, component_type, file_id, async_req=True)
         >>> result = thread.get()
 
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
+        :param str component_type: The component type. (required)
         :param str file_id: The file id. (required)
         :key int index: Index (order) of the component.
         :key str shape_id: Shape id for which shape to receive the content.
@@ -98,7 +100,7 @@ class ImportApi(object):
 
         local_var_params = locals()
 
-        all_params = ['item_id', 'file_id', 'index', 'shape_id']  # noqa: E501
+        all_params = ['item_id', 'component_type', 'file_id', 'index', 'shape_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -116,6 +118,10 @@ class ImportApi(object):
         if ('item_id' not in local_var_params or
                 local_var_params['item_id'] is None):
             raise ApiValueError("Missing the required parameter `item_id` when calling `adopt_file`")  # noqa: E501
+        # verify the required parameter 'component_type' is set
+        if ('component_type' not in local_var_params or
+                local_var_params['component_type'] is None):
+            raise ApiValueError("Missing the required parameter `component_type` when calling `adopt_file`")  # noqa: E501
         # verify the required parameter 'file_id' is set
         if ('file_id' not in local_var_params or
                 local_var_params['file_id'] is None):
@@ -126,6 +132,8 @@ class ImportApi(object):
         path_params = {}
         if 'item_id' in local_var_params:
             path_params['item-id'] = local_var_params['item_id']  # noqa: E501
+        if 'component_type' in local_var_params:
+            path_params['component-type'] = local_var_params['component_type']  # noqa: E501
         if 'file_id' in local_var_params:
             path_params['file-id'] = local_var_params['file_id']  # noqa: E501
 
@@ -145,7 +153,7 @@ class ImportApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/import/placeholder/{item-id}/[container,audio,video,binary]/adopt/{file-id}', 'POST',
+            '/import/placeholder/{item-id}/{component-type}/adopt/{file-id}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2581,7 +2589,7 @@ class ImportApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def import_placeholder_raw(self, item_id, body, **kwargs):  # noqa: E501
+    def import_placeholder_raw(self, item_id, component_type, body, **kwargs):  # noqa: E501
         """Import to a placeholder item using the request body  # noqa: E501
 
         Imports the file and extracts component data based on what type is specified (container, audio, video, binary). No transcoding will take place until all files have been imported.  # noqa: E501
@@ -2589,11 +2597,12 @@ class ImportApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.import_placeholder_raw(item_id, body, async_req=True)
+        >>> thread = api.import_placeholder_raw(item_id, component_type, body, async_req=True)
         >>> result = thread.get()
 
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
+        :param str component_type: The component type. (required)
         :param file body: The raw data. (required)
         :key str resource_id: The transcoder resource to use to execute the transcode.
         :key list[str] jobmetadata: Additional information for the job task.
@@ -2627,19 +2636,20 @@ class ImportApi(object):
         :rtype: JobType or multiprocessing.pool.AsyncResult
         """
         kwargs['_return_http_data_only'] = True
-        return self.import_placeholder_raw_with_http_info(item_id, body, **kwargs)  # noqa: E501
+        return self.import_placeholder_raw_with_http_info(item_id, component_type, body, **kwargs)  # noqa: E501
 
-    def import_placeholder_raw_with_http_info(self, item_id, body, **kwargs):  # noqa: E501
+    def import_placeholder_raw_with_http_info(self, item_id, component_type, body, **kwargs):  # noqa: E501
         """Import to a placeholder item using the request body  # noqa: E501
 
         Imports the file and extracts component data based on what type is specified (container, audio, video, binary). No transcoding will take place until all files have been imported.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.import_placeholder_raw_with_http_info(item_id, body, async_req=True)
+        >>> thread = api.import_placeholder_raw_with_http_info(item_id, component_type, body, async_req=True)
         >>> result = thread.get()
 
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
+        :param str component_type: The component type. (required)
         :param file body: The raw data. (required)
         :key str resource_id: The transcoder resource to use to execute the transcode.
         :key list[str] jobmetadata: Additional information for the job task.
@@ -2677,7 +2687,7 @@ class ImportApi(object):
 
         local_var_params = locals()
 
-        all_params = ['item_id', 'body', 'resource_id', 'jobmetadata', 'notification_data', 'thumbnail_service', 'tag', 'transfer_priority', 'index', 'require_fast_start', 'notification', 'fast_start_length', 'priority', 'storage_id', 'create_thumbnails', 'create_posters', 'override_fast_start', 'original', 'shape_id', 'filename', 'transfer_id', 'no_transcode']  # noqa: E501
+        all_params = ['item_id', 'component_type', 'body', 'resource_id', 'jobmetadata', 'notification_data', 'thumbnail_service', 'tag', 'transfer_priority', 'index', 'require_fast_start', 'notification', 'fast_start_length', 'priority', 'storage_id', 'create_thumbnails', 'create_posters', 'override_fast_start', 'original', 'shape_id', 'filename', 'transfer_id', 'no_transcode']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2695,6 +2705,10 @@ class ImportApi(object):
         if ('item_id' not in local_var_params or
                 local_var_params['item_id'] is None):
             raise ApiValueError("Missing the required parameter `item_id` when calling `import_placeholder_raw`")  # noqa: E501
+        # verify the required parameter 'component_type' is set
+        if ('component_type' not in local_var_params or
+                local_var_params['component_type'] is None):
+            raise ApiValueError("Missing the required parameter `component_type` when calling `import_placeholder_raw`")  # noqa: E501
         # verify the required parameter 'body' is set
         if ('body' not in local_var_params or
                 local_var_params['body'] is None):
@@ -2705,6 +2719,8 @@ class ImportApi(object):
         path_params = {}
         if 'item_id' in local_var_params:
             path_params['item-id'] = local_var_params['item_id']  # noqa: E501
+        if 'component_type' in local_var_params:
+            path_params['component-type'] = local_var_params['component_type']  # noqa: E501
 
         query_params = []
         if 'resource_id' in local_var_params:
@@ -2770,7 +2786,7 @@ class ImportApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/import/placeholder/{item-id}/[container,audio,video,binary]/raw', 'POST',
+            '/import/placeholder/{item-id}/{component-type}/raw', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3437,7 +3453,7 @@ class ImportApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def import_to_placeholder(self, item_id, **kwargs):  # noqa: E501
+    def import_to_placeholder(self, item_id, component_type, **kwargs):  # noqa: E501
         """Import to a placeholder item  # noqa: E501
 
         Imports the file and extracts component data based on what type is specified (container, audio, video, binary). No transcoding will take place until all files have been imported.  # noqa: E501
@@ -3445,11 +3461,12 @@ class ImportApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.import_to_placeholder(item_id, async_req=True)
+        >>> thread = api.import_to_placeholder(item_id, component_type, async_req=True)
         >>> result = thread.get()
 
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
+        :param str component_type: The component type. (required)
         :key str uri: A URI to the file that will be imported.  Make sure to percent encode the URI.  Must be specified unless `fileId` is specified.
         :key bool no_transcode: - `true` - Will disable transcoding even if the `tags` parameter is set.  Rather, the specified tag will be used to determine cropping, scaling etc.  of thumbnails.  - `false` (default) - Normal transcode.
         :key str original: If specified, should be one of the tags specified in the tag parameter.  Specifies that the original shape tag will be reset to the shape created to this tag.
@@ -3484,19 +3501,20 @@ class ImportApi(object):
         :rtype: JobType or multiprocessing.pool.AsyncResult
         """
         kwargs['_return_http_data_only'] = True
-        return self.import_to_placeholder_with_http_info(item_id, **kwargs)  # noqa: E501
+        return self.import_to_placeholder_with_http_info(item_id, component_type, **kwargs)  # noqa: E501
 
-    def import_to_placeholder_with_http_info(self, item_id, **kwargs):  # noqa: E501
+    def import_to_placeholder_with_http_info(self, item_id, component_type, **kwargs):  # noqa: E501
         """Import to a placeholder item  # noqa: E501
 
         Imports the file and extracts component data based on what type is specified (container, audio, video, binary). No transcoding will take place until all files have been imported.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.import_to_placeholder_with_http_info(item_id, async_req=True)
+        >>> thread = api.import_to_placeholder_with_http_info(item_id, component_type, async_req=True)
         >>> result = thread.get()
 
         :key bool async_req: execute request asynchronously
         :param str item_id: The item id. (required)
+        :param str component_type: The component type. (required)
         :key str uri: A URI to the file that will be imported.  Make sure to percent encode the URI.  Must be specified unless `fileId` is specified.
         :key bool no_transcode: - `true` - Will disable transcoding even if the `tags` parameter is set.  Rather, the specified tag will be used to determine cropping, scaling etc.  of thumbnails.  - `false` (default) - Normal transcode.
         :key str original: If specified, should be one of the tags specified in the tag parameter.  Specifies that the original shape tag will be reset to the shape created to this tag.
@@ -3535,7 +3553,7 @@ class ImportApi(object):
 
         local_var_params = locals()
 
-        all_params = ['item_id', 'uri', 'no_transcode', 'original', 'fast_start_length', 'create_thumbnails', 'create_posters', 'jobmetadata', 'notification_data', 'storage_id', 'require_fast_start', 'growing', 'tag', 'resource_id', 'thumbnail_service', 'settings', 'notification', 'file_id', 'shape_id', 'allow_reimport', 'index', 'priority', 'override_fast_start']  # noqa: E501
+        all_params = ['item_id', 'component_type', 'uri', 'no_transcode', 'original', 'fast_start_length', 'create_thumbnails', 'create_posters', 'jobmetadata', 'notification_data', 'storage_id', 'require_fast_start', 'growing', 'tag', 'resource_id', 'thumbnail_service', 'settings', 'notification', 'file_id', 'shape_id', 'allow_reimport', 'index', 'priority', 'override_fast_start']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3553,12 +3571,18 @@ class ImportApi(object):
         if ('item_id' not in local_var_params or
                 local_var_params['item_id'] is None):
             raise ApiValueError("Missing the required parameter `item_id` when calling `import_to_placeholder`")  # noqa: E501
+        # verify the required parameter 'component_type' is set
+        if ('component_type' not in local_var_params or
+                local_var_params['component_type'] is None):
+            raise ApiValueError("Missing the required parameter `component_type` when calling `import_to_placeholder`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'item_id' in local_var_params:
             path_params['item-id'] = local_var_params['item_id']  # noqa: E501
+        if 'component_type' in local_var_params:
+            path_params['component-type'] = local_var_params['component_type']  # noqa: E501
 
         query_params = []
         if 'uri' in local_var_params:
@@ -3622,7 +3646,7 @@ class ImportApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/import/placeholder/{item-id}/[container,audio,video,binary]', 'POST',
+            '/import/placeholder/{item-id}/{component-type}', 'POST',
             path_params,
             query_params,
             header_params,
